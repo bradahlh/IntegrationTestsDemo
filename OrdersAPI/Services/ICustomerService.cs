@@ -1,10 +1,8 @@
-﻿using System;
-using Microsoft.AspNetCore.Mvc;
-using OrderAPI.Models;
+﻿using OrderAPI.Models;
 
 namespace OrderAPI.Services
 {
-	public interface ICustomerService
+    public interface ICustomerService
 	{
 		Task<Customer> GetCustomerAsync(int customerId);
 	}

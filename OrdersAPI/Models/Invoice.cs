@@ -3,7 +3,7 @@ namespace OrderAPI
 {
 	public class Invoice
 	{
-        public int Id { get; set; }
+        public string Id { get; set; }
         public string FullName { get; set; } = string.Empty;
         public string Address { get; set; } = string.Empty;
         public string ProductName { get; set; } = string.Empty;
@@ -15,14 +15,23 @@ namespace OrderAPI
 		{
 		}
 
-        public Invoice(int id, string fullName, string address, decimal paymentPrice, DateTime dueDate, string productName)
+        public Invoice(
+            string id, 
+            string fullName, 
+            string address,
+            string productName,
+            decimal paymentPrice,
+            DateTime dueDate,
+            DateTime purchaseTime
+            )
         {
             Id = id;
             FullName = fullName;
             Address = address;
+            ProductName = productName;
             PaymentPrice = paymentPrice;
             DueDate = dueDate;
-            ProductName = productName;
+            PurchaseTime = purchaseTime;
         }
     }
 }

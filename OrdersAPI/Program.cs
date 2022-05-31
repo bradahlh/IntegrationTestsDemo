@@ -1,4 +1,5 @@
-﻿using System.Net.Http.Headers;
+﻿using OrderAPI.Services;
+using System.Net.Http.Headers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +17,17 @@ builder.Services.AddHttpClient(
         options.BaseAddress = new Uri("https://localhost:7183");
         options.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json", 1.0));
     });
+
+builder.Services.AddHttpClient(
+    name: "ProductAPI",
+    configureClient: options =>
+    {
+        options.BaseAddress = new Uri("https://localhost:7234");
+        options.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json", 1.0));
+    });
+
+builder.Services.AddScoped<ICustomerService, CustomerService>();
+builder.Services.AddScoped<IProductService, ProductService>();
 
 var app = builder.Build();
 
